@@ -17,7 +17,7 @@ const Banner = ({ purpose, title1, title2, desc1, desc2, buttonText, linkName, i
         <br />
         {title2}
       </Text>
-      <Text color="gray.700" fontSize="lg" paddingTop="3" paddingBottom="3" fontWeight="medium">
+      <Text color="gray.500" fontSize="lg" paddingTop="3" paddingBottom="3" fontWeight="medium">
         {desc1}
         <br />
         {desc2}
@@ -43,7 +43,7 @@ export default function Home({ propertyForSale, propertyForRent }) {
         linkName="/search?purpose=for-rent"
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
       />
-      <Flex flexWrap="wrap">
+      <Flex flexWrap="wrap" justifyContent="center">
         {propertyForRent.map((property) => (
           <Property property={property} key={property.id} />
         ))}
@@ -58,9 +58,11 @@ export default function Home({ propertyForSale, propertyForRent }) {
         linkName="/search?purpose=for-sale"
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008"
       />
-      {propertyForSale.map((property) => (
-        <Property property={property} key={property.id} />
-      ))}
+      <Flex flexWrap="wrap" justifyContent="center">
+        {propertyForSale.map((property) => (
+          <Property property={property} key={property.id} />
+        ))}
+      </Flex>
     </Box>
   );
 }

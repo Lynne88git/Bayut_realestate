@@ -1,7 +1,7 @@
-import Head from 'next/head';
-import { Box } from '@chakra-ui/react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Head from 'next/head'
+import { Box } from '@chakra-ui/react'
+import Navbar from './Navbar'
+import Footer from './Footer'
 
 const Layout = ({ children }) => (
   <>
@@ -18,6 +18,6 @@ const Layout = ({ children }) => (
       <Footer />
     </footer>
   </>
-);
+)
 
-export default Layout;
+export default Layout

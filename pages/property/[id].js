@@ -1,12 +1,12 @@
-import { Box, Flex, Spacer, Text } from '@chakra-ui/layout';
-import { Avatar } from '@chakra-ui/avatar';
-import { FaBed, FaBath } from 'react-icons/fa';
-import { BsGridFill } from 'react-icons/bs';
-import { GoVerified } from 'react-icons/go';
-import millify from 'millify';
+import { Box, Flex, Spacer, Text } from '@chakra-ui/layout'
+import { Avatar } from '@chakra-ui/avatar'
+import { FaBed, FaBath } from 'react-icons/fa'
+import { BsGridFill } from 'react-icons/bs'
+import { GoVerified } from 'react-icons/go'
+import millify from 'millify'
 
-import { baseUrl, fetchApi } from '../../utils/fetchApi';
-import ImageScrollbar from '../../components/ImageScrollbar';
+import { baseUrl, fetchApi } from '../../utils/fetchApi'
+import ImageScrollbar from '../../components/ImageScrollbar'
 
 const PropertyDetails = ({
   propertyDetails: {
@@ -23,8 +23,8 @@ const PropertyDetails = ({
     purpose,
     furnishingStatus,
     amenities,
-    photos
-  }
+    photos,
+  },
 }) => (
   <Box maxWidth="1000px" margin="auto" p="4">
     {photos && <ImageScrollbar data={photos} />}
@@ -39,7 +39,13 @@ const PropertyDetails = ({
         <Spacer />
         <Avatar size="sm" src={agency?.logo?.url}></Avatar>
       </Flex>
-      <Flex alignItems="center" p="1" justifyContent="space-between" w="250px" color="blue.400">
+      <Flex
+        alignItems="center"
+        p="1"
+        justifyContent="space-between"
+        w="250px"
+        color="blue.400"
+      >
         {rooms}
         <FaBed /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill />
       </Flex>
@@ -52,13 +58,18 @@ const PropertyDetails = ({
         {description}
       </Text>
     </Box>
-    <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
+    <Flex
+      flexWrap="wrap"
+      textTransform="uppercase"
+      justifyContent="space-between"
+    >
       <Flex
         justifyContent="space-between"
         w="400px"
         borderBottom="1px"
         borderColor="gray.100"
-        p="3">
+        p="3"
+      >
         <Text>Type</Text>
         <Text fontWeight="bold">{type}</Text>
       </Flex>
@@ -67,7 +78,8 @@ const PropertyDetails = ({
         w="400px"
         borderBottom="1px"
         borderColor="gray.100"
-        p="3">
+        p="3"
+      >
         <Text>Purpose</Text>
         <Text fontWeight="bold">{purpose}</Text>
       </Flex>
@@ -77,7 +89,8 @@ const PropertyDetails = ({
           w="400px"
           borderBottom="1px"
           borderColor="gray.100"
-          p="3">
+          p="3"
+        >
           <Text>Furnishing Status</Text>
           <Text fontWeight="bold">{furnishingStatus}</Text>
         </Flex>
@@ -100,7 +113,8 @@ const PropertyDetails = ({
               p="2"
               bg="gray.200"
               m="1"
-              borderRadius="5">
+              borderRadius="5"
+            >
               {amenity.text}
             </Text>
           ))
@@ -108,16 +122,16 @@ const PropertyDetails = ({
       </Flex>
     </Box>
   </Box>
-);
+)
 
-export default PropertyDetails;
+export default PropertyDetails
 
 export async function getServerSideProps({ params: { id } }) {
-  const data = await fetchApi(`${baseUrl}/properties/detail?externalID=${id}`);
+  const data = await fetchApi(`${baseUrl}/properties/detail?externalID=${id}`)
 
   return {
     props: {
-      propertyDetails: data
-    }
-  };
+      propertyDetails: data,
+    },
+  }
 }

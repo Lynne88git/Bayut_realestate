@@ -1,10 +1,19 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Flex, Box, Text, Button } from '@chakra-ui/react';
-import Property from '../components/Property';
-import { baseUrl, fetchApi } from '../utils/fetchApi';
+import Link from 'next/link'
+import Image from 'next/image'
+import { Flex, Box, Text, Button } from '@chakra-ui/react'
+import Property from '../components/Property'
+import { baseUrl, fetchApi } from '../utils/fetchApi'
 
-const Banner = ({ purpose, title1, title2, desc1, desc2, buttonText, linkName, imageUrl }) => (
+const Banner = ({
+  purpose,
+  title1,
+  title2,
+  desc1,
+  desc2,
+  buttonText,
+  linkName,
+  imageUrl,
+}) => (
   <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">
     <Image src={imageUrl} width={500} height={300} alt="banner" />
     <Box p="5">
@@ -16,7 +25,13 @@ const Banner = ({ purpose, title1, title2, desc1, desc2, buttonText, linkName, i
         <br />
         {title2}
       </Text>
-      <Text color="gray.500" fontSize="lg" paddingTop="3" paddingBottom="3" fontWeight="medium">
+      <Text
+        color="gray.500"
+        fontSize="lg"
+        paddingTop="3"
+        paddingBottom="3"
+        fontWeight="medium"
+      >
         {desc1}
         <br />
         {desc2}
@@ -26,7 +41,7 @@ const Banner = ({ purpose, title1, title2, desc1, desc2, buttonText, linkName, i
       </Button>
     </Box>
   </Flex>
-);
+)
 
 export default function Home({ propertyForSale, propertyForRent }) {
   // console.log(propertyForSale, propertyForRent);
@@ -63,21 +78,21 @@ export default function Home({ propertyForSale, propertyForRent }) {
         ))}
       </Flex>
     </Box>
-  );
+  )
 }
 
 export async function getStaticProps() {
   const propertyForSale = await fetchApi(
     `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`
-  );
+  )
   const propertyForRent = await fetchApi(
     `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6`
-  );
+  )
 
   return {
     props: {
       propertyForSale: propertyForSale?.hits,
-      propertyForRent: propertyForRent?.hits
-    }
-  };
+      propertyForRent: propertyForRent?.hits,
+    },
+  }
 }

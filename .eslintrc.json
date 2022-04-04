@@ -7,9 +7,10 @@
     
    "extends": ["eslint:recommended", 
     "plugin:react/recommended", 
+    "plugin:eslint-comments/recommended",
     "plugin:prettier/recommended"],
 
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
 
     "parserOptions": {
         "sourceType": "module",
@@ -17,7 +18,8 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": "latest"
+        "ecmaVersion": "latest",
+        "requireConfigFile": false
     },
     "plugins": [
         "react"
